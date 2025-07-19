@@ -1,0 +1,1 @@
+   pyinstaller --onefile --icon=1024x1024.png loc_counter.py   pyinstaller --onefile --icon=1024x1024.png loc_counter.py
