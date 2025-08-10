@@ -20,13 +20,18 @@ def count_lines_in_file(file_path):
 
 def main():
     total_lines = 0
-    for root, _, files in os.walk('.'):
+    for root, dirs, files in os.walk('.'):
+        # 排除以.开头的文件夹
+        dirs[:] = [d for d in dirs if not d.startswith('.')]
         for file in files:
+            # 排除以.开头的文件
+            if file.startswith('.'):
+                continue
             file_path = os.path.join(root, file)
             if not is_binary(file_path):
                 total_lines += count_lines_in_file(file_path)
     
-    print(f"Total lines of code in current directory (excluding binary files): {total_lines}")
+    print(f"Total lines of code in current directory (excluding binary files,files  and folders start with .): {total_lines}")
 
 if __name__ == "__main__":
     main()
